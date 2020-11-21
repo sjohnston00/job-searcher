@@ -1,0 +1,14 @@
+.job_info_container{
+flex: 1;
+  /* testin */
+}
+
+.chart_wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.chart_container{
+  flex: 2;
+  /* testing */
+}
