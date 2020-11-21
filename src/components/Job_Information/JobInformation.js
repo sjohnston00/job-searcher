@@ -77,29 +77,29 @@ export default function JobInformation() {
     setSearched(true)
   };
 
-  const getUnemploymentHistory = async () => {
-    //use the SOC in state to get the average unemployment rates from the LMI For ALL API
-  };
+  // const employmentHistory = async () => {
+  //   //use the SOC in state to get the average unemployment rates from the LMI For ALL API
+  // };
 
-  const getWorkingHours = async () => {
-    //use the SOC in state to get the average working hours from the LMI For ALL API
-    //then set the data to the chart
-  };
+  // const getWorkingHours = async () => {
+  //   //use the SOC in state to get the average working hours from the LMI For ALL API
+  //   //then set the data to the chart
+  // };
 
-  const getRelatedCourse = async () => {
-    //use the SOC in state to get the related courses from the LMI For ALL API
-  }
+  // const getRelatedCourse = async () => {
+  //   //use the SOC in state to get the related courses from the LMI For ALL API
+  // }
 
-  const averageYearWage = (weeklywage) => {
-    //this will be an array of the weekly salaries for each year the job has
-    //e.g SOC 2136 
-    // 2013 = estpay = £534
-    // 2015 = estpay = £235
-    // 2018 = estpay = £611
+  // const averageYearWage = (weeklywage) => {
+  //   //this will be an array of the weekly salaries for each year the job has
+  //   //e.g SOC 2136 
+  //   // 2013 = estpay = £534
+  //   // 2015 = estpay = £235
+  //   // 2018 = estpay = £611
 
-    //calculate the yearly wage for each year then add them up and divide them by the number in the array
-    //return average
-  };
+  //   //calculate the yearly wage for each year then add them up and divide them by the number in the array
+  //   //return average
+  // };
 
   return (
     <>
