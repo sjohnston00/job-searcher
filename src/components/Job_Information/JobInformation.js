@@ -18,7 +18,7 @@ export default function JobInformation() {
 
   useEffect(() => {
     const chart = async () => {
-      const req = await axios.get(`http://api.lmiforall.org.uk/api/v1/ashe/estimatePay?soc=${currentJob.soc}`);
+      const req = await axios.get(`https://api.lmiforall.org.uk/api/v1/ashe/estimatePay?soc=${currentJob.soc}`);
       const data = await req.data;
 
       data.series.sort((a,b) => {
@@ -66,7 +66,7 @@ export default function JobInformation() {
       return;
     }
 
-    const job = await axios.get(`http://api.lmiforall.org.uk/api/v1/soc/search?q=${jobInput.current.value}`);
+    const job = await axios.get(`https://api.lmiforall.org.uk/api/v1/soc/search?q=${jobInput.current.value}`);
     if (job.data.length === 0) {
       seterrorMessage('Not Results Found');
       return;
