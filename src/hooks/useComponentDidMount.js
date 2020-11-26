@@ -1,4 +1,5 @@
-import React, { useEffect, useRef } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect, useRef } from 'react';
 
 export default function useDidMountEffect (func, deps) {
     const didMount = useRef(false);
