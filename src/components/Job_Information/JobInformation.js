@@ -2,6 +2,7 @@ import React, {useState, useEffect, useRef} from 'react'
 import {Line} from 'react-chartjs-2';
 import axios from 'axios';
 import styles from './JobInformation.module.css'
+import useDidMountEffect from '../../hooks/useComponentDidMount';
 
 export default function JobInformation() {
   //declaring state variables
@@ -13,22 +14,74 @@ export default function JobInformation() {
   const [unemploymentRate, setUnemploymentRate] = useState({});
   const [averageWage, setAverageWage] = useState(0);
   const [searched, setSearched] = useState(false);
+  const [loading, setLoading] = useState(false);
   const jobInput = useRef(null);
   const regionDropdown = useRef(null);
 
 
+  //custom hook so it doesn't run on first render
   //once the currentJob has changed search for estimate pay
-  useEffect(() => {
+  useDidMountEffect(() => {
+    setLoading(true);
     const chart = async () => {
       let url = `https://api.lmiforall.org.uk/api/v1/ashe/estimatePay?soc=${currentJob.soc}`;
       if (regionDropdown.current.value > 0) {
         url = `https://api.lmiforall.org.uk/api/v1/ashe/estimatePay?soc=${currentJob.soc}&filters=region%3A${regionDropdown.current.value}`;
       }
 
-      const req = await axios.get(url);
-      const data = await req.data;
-
-      if (!data.series) {
+      try {
+        const req = await axios.get(url);
+        const data = await req.data;
+  
+        if (!data.series) {
+          setestimatePay({
+            labels: ['Not Enough Data'],
+            datasets: [
+              {
+                label: 'Not Enough Data',
+                data: [],
+                backgroundColor: ['rgba(64, 59, 141, 0.7)'],
+                borderWidth: 4,
+              }
+            ]
+          })
+          return
+        }
+  
+        data.series.sort((a,b) => {
+          if (a.year < b.year) {
+            return -1
+          }
+          if (a.year > b.year) {
+            return 1
+          }
+          return 0;
+        });
+  
+        data.series.forEach(e => {
+          e.estpay = e.estpay * 52;
+        });
+  
+        const years = data.series.map(obj => {
+          return obj.year
+        })
+        const pay = data.series.map(obj => {
+          return obj.estpay
+        })
+  
+        setestimatePay({
+          labels: [...years],
+          datasets: [
+            {
+              label: 'Salary',
+              data: [...pay],
+              backgroundColor: ['rgba(64, 59, 141, 0.7)'],
+              borderWidth: 4,
+            }
+          ]
+        })
+        setLoading(false)
+      } catch (error) {
         setestimatePay({
           labels: ['Not Enough Data'],
           datasets: [
@@ -39,45 +92,11 @@ export default function JobInformation() {
               borderWidth: 4,
             }
           ]
-        })
-        return
+        })      
       }
-
-      data.series.sort((a,b) => {
-        if (a.year < b.year) {
-          return -1
-        }
-        if (a.year > b.year) {
-          return 1
-        }
-        return 0;
-      });
-
-      data.series.forEach(e => {
-        e.estpay = e.estpay * 52;
-      });
-
-      const years = data.series.map(obj => {
-        return obj.year
-      })
-      const pay = data.series.map(obj => {
-        return obj.estpay
-      })
-
-      setestimatePay({
-        labels: [...years],
-        datasets: [
-          {
-            label: 'Salary',
-            data: [...pay],
-            backgroundColor: ['rgba(64, 59, 141, 0.7)'],
-            borderWidth: 4,
-          }
-        ]
-      })
     }
     chart()
-  }, [currentJob, regionDropdown]) 
+  }, [currentJob, regionDropdown])
 
   //once the current job state changes get Unemployment History
   useEffect(() => {
@@ -163,7 +182,6 @@ export default function JobInformation() {
     getWorkingHours();
   }, [currentJob, regionDropdown]);
 
-
   //once the current job state has changed then search for the related course
   useEffect(() => {
     try {
@@ -200,8 +218,6 @@ export default function JobInformation() {
     }
   }, [estimatePay, regionDropdown]);
 
-
-
   const searchJob = async () => {
     if (jobInput.current.value === null ||jobInput.current.value === '') {
       seterrorMessage('Please provide an input');
@@ -222,6 +238,12 @@ export default function JobInformation() {
 
   return (
     <>
+      {loading && 
+      <div className={styles.loading_overlay}>
+        <svg className={styles.loading_icon} height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12,22c5.421,0,10-4.579,10-10h-2c0,4.337-3.663,8-8,8s-8-3.663-8-8c0-4.336,3.663-8,8-8V2C6.579,2,2,6.58,2,12 C2,17.421,6.579,22,12,22z"/>
+        </svg>
+      </div>}
       <h1>Job Information</h1>
       <div>
         <input type='text' ref={jobInput} placeholder='Search for a job...'/>
@@ -319,8 +341,6 @@ export default function JobInformation() {
           </div>
       </>
       }
-      
-      
     </>
   )
 }
