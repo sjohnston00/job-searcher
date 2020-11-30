@@ -1,0 +1,108 @@
+.container {
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 10px;
+}
+
+
+.first_column h1, .second_column button, .second_column a{
+  display: inline;
+}
+
+.help_button {
+  max-height: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.github_icon{
+  height: 32px;
+  width: 32px;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal_content{
+  position: relative;
+  background-color: white;
+  margin: 15px auto;
+  padding: 20px;
+  border: 2px solid black;
+  width: 70%;
+  height: 400px;
+}
+
+.modal_content button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 2em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: .3s ease;
+  border-radius: 8px;
+}
+
+.modal_content button:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.menu_button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.sidebar {
+  width: 0px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #fdfdfd;
+  overflow-x: hidden;
+  transition: .2s ease;
+  box-shadow: 1px 0 10px 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar a {
+  padding: 20px;
+  display: block;
+  transition: .3s ease;
+}
+
+.sidebar a:hover {
+  background-color: #EFF0F0;
+  text-decoration: none;
+}
+
+.sidebar h1 {
+  text-align: right;
+  margin-top: 20px;
+  padding: 0 50px 0 0;
+  font-size: 1.2em;
+}
+
+
+.close_button {
+  border: none;
+  cursor: pointer;
+  background: none;
+  font-size: 2em;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}

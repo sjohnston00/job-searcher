@@ -1,0 +1,71 @@
+a {
+  display: block;
+  text-decoration: none;
+  color: #090C10;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.links {
+  flex: 1;
+  display: flex;
+}
+
+.footer_heading {
+  flex: 2;
+}
+
+.links div {
+  margin: 0 10px;
+}
+
+.container {
+  background-color: #EFF0F0;
+}
+
+
+.main_footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+}
+
+.information h2, .community h2{
+  padding: 10px 0;
+  font-size: 16px;
+}
+
+.information a, .community a {
+  font-size: 14px;
+  padding: 1px 0;
+}
+
+.donate_button{
+  max-height: 30px;
+  text-transform: uppercase;
+  padding: 8px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  border: none;
+  background-color: #413B8D;
+  color: #fdfdfd;
+}
+
+.footer_socials {
+  padding: 10px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer_second_column {
+  display: flex;
+  align-items: center;
+}
+
+.footer_second_column a, .footer_second_column span {
+  padding: 0 5px;
+}
