@@ -1,0 +1,43 @@
+.container, .flex_container {
+  margin: 10px 20px;
+}
+
+.flex_container {
+  display: flex;
+  flex-direction: column;
+}
+
+.services {
+  background-color: #413B8D;
+  box-shadow: 1px 0px 10px 5px rgba(0, 0, 0, 0.2);
+  margin: 20px 0;
+  border-radius: 4px;
+  text-align: center;
+  padding: 10px 20px;
+  color: white;
+}
+
+.services_icons {
+  margin: 20px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px 50px;
+}
+
+.service_icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;align-items: center;
+  padding: 30px 20px;
+  border-radius: 8px;
+  background-color: #9fa4a931;
+}
+
+.service_icon p {
+  margin: 10px 0;
+  font-size: .8em;
+}
+
+.heading {
+  text-align: center;
+}

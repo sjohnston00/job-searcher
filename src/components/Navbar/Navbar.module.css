@@ -1,5 +1,5 @@
 .container {
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: #EFF0F0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -12,10 +12,16 @@
 }
 
 .help_button {
-  max-height: 20px;
+  margin: 0 5px;
+  text-transform: uppercase;
   background: none;
   border: none;
   cursor: pointer;
+}
+
+.second_column {
+  display: flex;
+  align-items: center;
 }
 .github_icon{
   height: 32px;
@@ -62,6 +68,7 @@
 }
 
 .menu_button {
+  margin-left: -10px;
   border: none;
   background: none;
   cursor: pointer;
@@ -74,7 +81,7 @@
   left: 0;
   background-color: #fdfdfd;
   overflow-x: hidden;
-  transition: .2s ease;
+  transition: .15s ease;
   box-shadow: 1px 0 10px 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -104,5 +111,5 @@
   font-size: 2em;
   position: absolute;
   top: 10px;
-  left: 10px;
+  left: 0px;
 }

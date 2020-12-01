@@ -35,7 +35,7 @@ export default function Navbar() {
         <h1>UK Job Searcher</h1>
         <a href='/'>Job Information</a>
         <a href='/areainformation'>Area Information</a>
-        <a href='/fundinganduniversties'>Funding and Universities</a>
+        <a href='/fundinganduniversities'>Funding and Universities</a>
         <a href='/aboutus'>About Us</a>
         <a href='/contactus'>Contact Us</a>
         <button className={styles.close_button} onClick={closeSidebar}>&times;</button>
