@@ -49,6 +49,7 @@ a:hover {
 
 .donate_button{
   max-height: 30px;
+  max-width: 100px;
   text-transform: uppercase;
   padding: 8px 20px;
   border-radius: 4px;

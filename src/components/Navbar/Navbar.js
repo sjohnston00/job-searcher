@@ -2,17 +2,20 @@ import React from 'react'
 import styles from './Navbar.module.css';
 
 export default function Navbar() {
-  const modal = document.querySelector('#modal');
-
+  
   const openModal = () => {
+    const modal = document.querySelector('#modal');
     modal.style.display = 'block';
-  };
 
+  };
+  
   const closeModal = () => {
+    const modal = document.querySelector('#modal');
     modal.style.display = 'none';
   };
-
+  
   window.onclick = (e) => {
+    const modal = document.querySelector('#modal');
     if (e.target === modal) {
       modal.style.display = 'none';
     }
@@ -57,15 +60,15 @@ export default function Navbar() {
             </svg>
           </a>
         </div>
-
         <div className={styles.modal} id='modal'>
           <div className={styles.modal_content} id='modal-content'>
-            <h1>Help</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam a interdum velit. Nulla vulputate tortor risus, id efficitur erat commodo nec. Mauris arcu erat, 
-            pharetra et ultricies bibendum, placerat id est. Proin sit amet bibendum justo. Ut aliquet congue turpis ac gravida. Vestibulum ante ipsum primis 
-            in faucibus orci luctus et ultrices posuere cubilia curae; Integer rhoncus efficitur mi at pulvinar. Proin et sem quis justo gravida pharetra vel 
-            sit amet lectus. Cras consectetur, lacus faucibus bibendum luctus, elit lorem efficitur lectus, non efficitur augue libero sed mi.</p>
-            <button onClick={closeModal} className={styles.modal_close_button}>x</button>
+            <h2>Help</h2>
+            <p>Head to the <a href='/aboutus' className={styles.purple_link}>About Us</a> section if you want to learn more about us as a company.</p>
+            <p>Using the <a href='/jobinformation' className={styles.purple_link}>Job Information</a> page is as easy as searching for any type of job you can think of and press Enter. You can also filter your search to a specific area in the UK by using the dropdown menu beneath the search box.</p>
+            <p>Using the <a href='/areainformation' className={styles.purple_link}>Area Information</a> page is easier than the <a href='/jobinformation' className={styles.purple_link}>Job Information</a> page, just use the dropdown menu and look at the results change for the area you've chossen.</p>
+            <p>If you looking for Universities around the UK then use our <a href='/fundinganduniversities' className={styles.purple_link}>Funding and Universities</a> page, just search any city of university you would like to know about and the results will apear bellow.</p>
+            <p>If you have any further question please do not hesitate to <a href='/contactus' className={styles.purple_link}>Contact Us</a>.</p>
+            <button onClick={closeModal}>&times;</button>
         
           </div>
         </div>

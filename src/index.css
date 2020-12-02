@@ -5,15 +5,16 @@
   sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-appearance: none;
 }
 
 body {
   min-height: 100vh;
 }
 
-ul {
-  list-style-type: none;
-}
+
+
+
 a {
   cursor: pointer;
 }

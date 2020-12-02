@@ -1,40 +1,124 @@
-.job_info_container{
-flex: 1;
-  /* testin */
+.container {
+  margin: 10px 20px;
+}
+.heading {
+  text-align: center;
+}
+
+.search_area {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.search_box {
+  margin: 10px auto;
+  width: 60%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search_box input {
+  padding: 6px 40px 6px 8px; 
+  border: none;
+  width: 100%;
+  border-bottom: 1px solid #787878;
+  border-radius: 0;
+}
+
+.search_box button {
+  margin-left: -35px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.dropdown_box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dropdown_box svg {
+  margin-left: -20px;
+  height: 16px;
+  width: 16px;
+  transition: .3s ease;
+}
+
+.dropdown_box select{
+  cursor: pointer;
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid #787878;
+  background-color: #F8F8F8;
+  padding: 6px 8px;
+}
+
+.not_searched {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+}
+
+.not_searched_left p{
+  margin: 10px 0;
+}
+
+.purple {
+  color: #413B8D;
+  text-transform: uppercase;
+}
+
+.not_searched_right {
+  margin: 40px;
+}
+
+.not_searched_right svg {
+  height: 60px;
+  width: 60px;
+  fill: #413B8D;
 }
 
 .chart_wrapper {
   display: flex;
-  justify-content: flex-end;
-}
-
-.chart_container{
-  flex: 2;
-  /* testing */
-}
-
-.loading_overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.2);
-  display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
-  z-index: -1;
+  margin: 20px 0;
 }
 
-.loading_icon {
-  animation: loading 0.7s linear infinite;
+.chart_container {
+  height: 350px;
 }
 
-@keyframes loading {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+.qualifications, .estimateHours, .averageSalary, .relatedCourses {
+  background-color: #F0F0F0;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0px 4px 10px 5px rgba(0, 0, 0, 0.1);
+  margin: 40px 0;
 }
+
+.qualifications h2, .estimateHours h2, .averageSalary h2, .relatedCourses h2{
+  margin-bottom: 15px;
+}
+
+.qualifications p, .estimateHours p, .averageSalary p {
+  line-height: 1.4em;
+}
+
+.relatedCourses ul{
+  padding: 0 20px;
+  line-height: 2em;
+}
+
+
+.estimateHours p, .averageSalary p {
+  font-size: 2em;
+  text-align: center;
+}
+

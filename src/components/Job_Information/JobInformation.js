@@ -14,7 +14,6 @@ export default function JobInformation() {
   const [unemploymentRate, setUnemploymentRate] = useState({});
   const [averageWage, setAverageWage] = useState(0);
   const [searched, setSearched] = useState(false);
-  const [loading, setLoading] = useState(false);
   const jobInput = useRef(null);
   const regionDropdown = useRef(null);
 
@@ -22,7 +21,6 @@ export default function JobInformation() {
   //custom hook so it doesn't run on first render
   //once the currentJob has changed search for estimate pay
   useDidMountEffect(() => {
-    setLoading(true);
     const chart = async () => {
       let url = `https://api.lmiforall.org.uk/api/v1/ashe/estimatePay?soc=${currentJob.soc}`;
       if (regionDropdown.current.value > 0) {
@@ -80,7 +78,6 @@ export default function JobInformation() {
             }
           ]
         })
-        setLoading(false)
       } catch (error) {
         setestimatePay({
           labels: ['Not Enough Data'],
@@ -195,7 +192,7 @@ export default function JobInformation() {
       }
     
       const relatedCoursesArray = data.years[0].courses.filter(element => {
-        return element.percentage > 50; 
+        return element.percentage > 5; 
       });
       setRelatedCourses(relatedCoursesArray);
       };
@@ -238,61 +235,69 @@ export default function JobInformation() {
 
   return (
     <>
-      {loading && 
-      <div className={styles.loading_overlay}>
-        <svg className={styles.loading_icon} height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12,22c5.421,0,10-4.579,10-10h-2c0,4.337-3.663,8-8,8s-8-3.663-8-8c0-4.336,3.663-8,8-8V2C6.579,2,2,6.58,2,12 C2,17.421,6.579,22,12,22z"/>
-        </svg>
-      </div>}
-      <h1>Job Information</h1>
-      <div>
-        <input type='text' ref={jobInput} placeholder='Search for a job...'/>
-        <button onClick={searchJob}>Search</button>
-        <br/>
-        <br/>
-        <select id='Region-Filter' ref={regionDropdown} onChange={searchJob}>
-          <option value='0'>All Areas</option>
-          <option value='1'>London</option>
-          <option value='2'>South East (England)</option>
-          <option value='3'>East of England</option>
-          <option value='4'>South West (England)</option>
-          <option value='5'>West Midlands (England)</option>
-          <option value='6'>East Midlands (England)</option>
-          <option value='7'>Yorkshire and the Humber</option>
-          <option value='8'>North West (England)</option>
-          <option value='9'>North East (England)</option>
-          <option value='10'>Wales</option>
-          <option value='11'>Scotland</option>
-          <option value='12'>Northern Ireland</option>
-        </select>
-        {errorMessage.length > 0 && <p>{errorMessage}</p>}
+      <div className={styles.container}>
+        <h1 className={styles.heading}>Job Information</h1>
+      <div className={styles.search_area}>
+        <div className={styles.search_box}>
+          <input onKeyUp={(e) => e.code === 'Enter' && searchJob() } type='text' ref={jobInput} placeholder='Search for a job...'/>
+          <button onClick={searchJob}>
+            <svg height="16px" width="16px" fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z" fillRule="evenodd"/>
+              <path d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" fillRule="evenodd"/>
+            </svg>
+          </button>
+        </div>
+        <div className={styles.dropdown_box}>
+          <select id='Region-Filter' ref={regionDropdown} onChange={searchJob}>
+            <option value='0'>All Areas</option>
+            <option value='1'>London</option>
+            <option value='2'>South East (England)</option>
+            <option value='3'>East of England</option>
+            <option value='4'>South West (England)</option>
+            <option value='5'>West Midlands (England)</option>
+            <option value='6'>East Midlands (England)</option>
+            <option value='7'>Yorkshire and the Humber</option>
+            <option value='8'>North West (England)</option>
+            <option value='9'>North East (England)</option>
+            <option value='10'>Wales</option>
+            <option value='11'>Scotland</option>
+            <option value='12'>Northern Ireland</option>
+          </select>
+          <svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
+            <path d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"/>
+          </svg>
+        </div>
+      {errorMessage.length > 0 && <p>{errorMessage}</p>}
       </div>
       {!searched ? 
-        <div>
-        <p>Looks like you haven't a job yet</p>
-        <p>Click Here to familiarise yourself</p>
-        <p>Take a look at an example here</p>
-      </div>
+        <div className={styles.not_searched}>
+          <div className={styles.not_searched_left}>
+            <p>Looks like you haven't searched for a job yet</p>
+            <p>Click the <b className={styles.purple}>help</b> button at the top to familiarise yourself</p>
+          </div>
+          <div className={styles.not_searched_right}>
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10,18c1.846,0,3.543-0.635,4.897-1.688l4.396,4.396l1.414-1.414l-4.396-4.396C17.365,13.543,18,11.846,18,10 c0-4.411-3.589-8-8-8s-8,3.589-8,8S5.589,18,10,18z M10,4c3.309,0,6,2.691,6,6s-2.691,6-6,6s-6-2.691-6-6S6.691,4,10,4z"/>
+            </svg>
+          </div>
+        </div>
       : 
       <>
         <div className={styles.chart_wrapper}>
           <div className={styles.job_info_container}>
             <h1>Title: {currentJob.title}</h1>
             <br/>
-            <p>Description: {currentJob.description}</p>
+            <p><b>Description:</b> {currentJob.description}</p>
             <br/>
-            <p>Tasks: {currentJob.tasks}</p>
+            <p><b>Tasks:</b> {currentJob.tasks}</p>
             <br/>
-            <p>SOC: {currentJob.soc}</p>
+            <p><b>SOC:</b> {currentJob.soc}</p>
             <br/>
-            <p>Estimate Hours: {estimateHours ? estimateHours : 'Not Enough Data'}</p>
-            <br/>
-            <p>Average Salary: £{averageWage}</p>
-            <br/>
+            
           </div>  
           <div className={styles.chart_container}>
             <Line data={estimatePay} options={{
-              responsive: true,
+              maintainAspectRatio: false,
               tooltips: {
                 callbacks: {
                     label: function(tooltipItem, data) {
@@ -309,38 +314,64 @@ export default function JobInformation() {
             }}/>
           </div>
         </div>
-        <p>Qualifications: {currentJob.qualifications}</p>
-        <br/>
-        <h3>Related Courses</h3>
-        <ul>
-          {relatedCourses.map((course, i) => {
-            return (
-              <li key={i}>{course.name}</li>
-            )
-          })}
-        </ul>
+        <div className={styles.qualifications}>
+          <h2 className={styles.heading}>Qualifications</h2>
+          <p>{currentJob.qualifications}</p>
+        </div>
 
-        <h2>Unemployment History</h2>
-        <div className={styles.chart_container}>
-            <Line data={unemploymentRate} options={{
-              responsive: true,
-              tooltips: {
-                callbacks: {
-                    label: function(tooltipItem, data) {
-                        var label = data.datasets[tooltipItem.datasetIndex].label || '';
+        <div className={styles.estimateHours}>
+          <h2 className={styles.heading}>Estimate Hours</h2>
+          <p>{estimateHours ? estimateHours : 'Not Enough Data'} hrs/wk</p>
+        </div>
 
-                        if (label) {
-                            label += ': ';
-                        }
-                        label += `${Math.round(tooltipItem.yLabel * 100) / 100}%`;
-                        return label;
-                    }
+        <div className={styles.averageSalary}>
+          <h2 className={styles.heading}>Average Salary</h2>
+          <p>£{averageWage}</p>
+        </div>
+
+        <div className={styles.relatedCourses}>
+          <h2 className={styles.heading}>Related Courses</h2>
+          <ul>
+            {relatedCourses.map((course, i) => {
+              return (
+                <li key={i}>{course.name}</li>
+              )
+            })}
+          </ul>
+        </div>
+
+        <div className={styles.UnemploymentHistory}>
+          <h2>Unemployment History</h2>
+          <div className={styles.chart_container}>
+              <Line data={unemploymentRate} options={{
+                maintainAspectRatio: false,
+                scales: {
+                yAxes: [{
+                  ticks: {
+                    beginAtZero: true,
+                  }
+                }]
+              },
+                tooltips: {
+                  callbacks: {
+                      label: function(tooltipItem, data) {
+                          var label = data.datasets[tooltipItem.datasetIndex].label || '';
+
+                          if (label) {
+                              label += ': ';
+                          }
+                          label += `${Math.round(tooltipItem.yLabel * 100) / 100}%`;
+                          return label;
+                      }
+                  }
                 }
-              }
-            }}/>
+              }}/>
           </div>
+        </div>
+
       </>
       }
+      </div>
     </>
   )
 }
