@@ -21,7 +21,7 @@ export default function Footer() {
           <a href='https://github.com/sjohnston00/job-searcher' rel='noreferrer' target='_blank'>Project Background</a>
         </div>
       </div>
-      <button className={styles.donate_button}>Donate</button>
+      <button className={styles.donate_button} onClick={() => alert('Your kindness is enough for me. ')}>Donate</button>
       </div>
       <hr/>
       <div className={styles.footer_socials}>

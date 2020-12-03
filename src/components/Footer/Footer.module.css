@@ -60,7 +60,7 @@ a:hover {
 }
 
 .footer_socials {
-  padding: 10px 40px;
+  padding: 10px 20px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -74,4 +74,17 @@ a:hover {
 
 .footer_second_column a, .footer_second_column span {
   padding: 0 15px 0 0;
+}
+
+@media only screen and (min-width: 800px) {
+  .main_footer {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .footer_socials {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
 }

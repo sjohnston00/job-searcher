@@ -4,16 +4,15 @@ import styles from './AboutUs.module.css'
 export default function AboutUs() {
   return (
     <>
-      <div className={styles.container}>
-        <h1 className={styles.heading}>About Us</h1>
-      </div>
 
       <div className={styles.flex_container}>
-        <p>Wether you are looking for a different career or just starting a new one
-        , we have the tools for you start researching this new stage of your life.
-        <br/>
-        Please take the information provided with a grain of salt as they might not be 100% accurate and may be subject to change in the future
-        </p>
+        <div className={styles.container}>
+          <h1 className={styles.heading}>About Us</h1>
+          <p>Wether you are looking for a different career or just starting a new one, we have the tools for you start researching this new stage of your life.
+          <br/>
+          Please take the information provided with a grain of salt as they might not be 100% accurate and may be subject to change in the future
+          </p>
+        </div>
 
         <div className={styles.services}>
           <h1>Services</h1>

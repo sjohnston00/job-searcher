@@ -4,6 +4,25 @@
 .heading {
   text-align: center;
 }
+.job_info_container {
+  position: relative;
+  padding: 20px;
+}
+
+.job_info_container svg:first-child {
+  transform: rotate(-135deg);
+  position: absolute;
+  top: 0;
+  left: 0;
+
+}
+.job_info_container svg:last-child {
+  transform: rotate(45deg);
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  
+}
 
 .search_area {
   display: flex;
@@ -91,11 +110,12 @@
   margin: 20px 0;
 }
 
-.chart_container {
-  height: 350px;
+.chart_container, .unemployment_chart_container {
+  height: 400px;
+  width: 100%;
 }
 
-.qualifications, .estimateHours, .averageSalary, .relatedCourses {
+.qualifications, .estimateHours, .averageSalary, .relatedCourses, .UnemploymentHistory {
   background-color: #F0F0F0;
   border-radius: 16px;
   padding: 20px;
@@ -114,11 +134,58 @@
 .relatedCourses ul{
   padding: 0 20px;
   line-height: 2em;
+  font-size: 1.5em;
 }
 
 
 .estimateHours p, .averageSalary p {
   font-size: 2em;
   text-align: center;
+}
+
+
+@media only screen and (min-width: 1050px){
+  
+  .chart_wrapper{
+    flex-direction: row;
+  }
+
+  .job_info_container {
+    flex: 1;
+  }
+
+  .chart_container {
+    flex: 1;
+    height: 500px;
+  }
+
+  .flex_container_1, .flex_container_2 {
+    display: flex;
+  }
+  .flex_container_2 {
+    flex-direction: row-reverse;
+  }
+  .relatedCourses{
+    flex: 1;
+  }
+
+  .UnemploymentHistory {
+    flex: 2;
+
+    margin-right: 30px;
+  }
+  .qualifications {
+    margin-right: 30px;
+    flex: 1;
+  }
+  .estimate_and_salary {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    flex: 2;
+
+  }
+
+
 }
 

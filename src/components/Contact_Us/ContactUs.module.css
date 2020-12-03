@@ -1,4 +1,9 @@
-.container {
+.flex_container {
+  display: flex;
+  flex-direction: column;
+}
+
+.container, .form_container {
   margin: 10px 20px;
 }
 
@@ -6,11 +11,11 @@
   text-align: center;
 }
 
-.input_group {
+.input_group, .message_group {
   margin: 15px 0;
 }
 
-.input_group input, .input_group textarea {
+.input_group input, .message_group textarea {
   resize: none;
   border-radius: 0;
   width: 100%;
@@ -20,7 +25,7 @@
   border-bottom: 1px solid #787878;
 }
 
-.input_group textarea {
+.message_group textarea {
   height: 200px;
 }
 
@@ -28,7 +33,7 @@ form {
   margin: 50px 0;
 }
 
-.input_group label {
+.input_group label, .message_group label {
   display: block;
   margin-bottom: 5px;
 }
@@ -84,4 +89,41 @@ form {
   justify-content: space-between;
   align-items: center;
   margin: 10px 50px;
+}
+
+@media only screen and (min-width: 1000px){
+  .flex_container {
+    margin: 30px 0;
+    flex-direction: row-reverse;
+  }
+
+  .contact_info {
+    transform: translateX(-10px);
+    height: 550px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .message_group {
+   grid-column: span 2;
+  }
+
+  .form_container {
+    flex: 1.5;
+  }
+
+  form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 0 20px;
+    grid-template-rows: auto;
+  }
+
+  .submit_button {
+    grid-column: 2;
+    width: 80%;
+    margin: 0 0 0 auto;
+  }
 }

@@ -3,12 +3,11 @@ import styles from './ContactUs.module.css'
 
 export default function ContactUs() {
   return (
-    <>
-      <div className={styles.container}>
+    <div className={styles.flex_container}>
+      <div className={styles.form_container}>
         <h1 className={styles.heading}>Contact Us</h1>
         <p className={styles.heading}>Any Questions? Don't hesitate to contact us.</p>
 
-        <div className={styles.container}>
           <form action="/" method="post">
             <div className={styles.input_group}>
               <label htmlFor="first-name" required>First Name</label>
@@ -30,21 +29,20 @@ export default function ContactUs() {
               <input type="tel" id="phone-number"/>
             </div>
 
-            <div className={styles.input_group}>
+            <div className={styles.message_group}>
               <label htmlFor="message" required>Message</label>
               <textarea id="message"></textarea>
             </div>
 
             <button className={styles.submit_button}>Send Message</button>
           </form>
-        </div>
       </div>
 
-      <div className={styles.container}>
         <div className={styles.contact_info}>
-          <h1 className={styles.contact_info_heading}>Contact Information</h1>
-          <p className={styles.contact_info_subheading}>Fill out the form we'll get back to you within 48hrs</p>
-
+          <div>
+            <h1 className={styles.contact_info_heading}>Contact Information</h1>
+            <p className={styles.contact_info_subheading}>Fill out the form we'll get back to you within 48hrs</p>
+          </div>
           <div className={styles.contact_info_section}>
             <svg height="24px" width="24px" fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
               <path d="M2.267.98a1.636 1.636 0 0 1 2.448.152l1.681 2.162c.309.396.418.913.296 1.4l-.513 2.053a.636.636 0 0 0 .167.604L8.65 9.654a.636.636 0 0 0 .604.167l2.052-.513a1.636 1.636 0 0 1 1.401.296l2.162 1.681c.777.604.849 1.753.153 2.448l-.97.97c-.693.693-1.73.998-2.697.658a17.47 17.47 0 0 1-6.571-4.144A17.47 17.47 0 0 1 .639 4.646c-.34-.967-.035-2.004.658-2.698l.97-.969z" fillRule="evenodd"/>
@@ -92,7 +90,6 @@ export default function ContactUs() {
             </a>
           </div>
         </div>
-      </div>
-    </>
+    </div>
   )
 }

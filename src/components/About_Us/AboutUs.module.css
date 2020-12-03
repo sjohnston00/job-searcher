@@ -41,3 +41,28 @@
 .heading {
   text-align: center;
 }
+
+
+@media only screen and (min-width: 800px){
+ .flex_container {
+   flex-direction: row;
+ } 
+ .container {
+   margin: 20px 0;
+   flex: 1;
+ }
+
+ .container h1 {
+   margin-bottom: 20px;
+ }
+
+ .container p {
+   line-height: 1.4em;
+   letter-spacing: 1px;
+ }
+
+ .services {
+   flex: 1.5;
+   transform: translateX(50px);
+ }
+}
