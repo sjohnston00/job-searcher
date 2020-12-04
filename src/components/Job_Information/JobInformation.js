@@ -14,8 +14,9 @@ export default function JobInformation() {
   const [unemploymentRate, setUnemploymentRate] = useState({});
   const [averageWage, setAverageWage] = useState(0);
   const [searched, setSearched] = useState(false);
-  const jobInput = useRef(null);
+  const [jobInput, setJobInput] = useState('');
   const regionDropdown = useRef(null);
+  const [jobData, setJobData] = useState([]);
 
 
   //custom hook so it doesn't run on first render
@@ -96,7 +97,7 @@ export default function JobInformation() {
   }, [currentJob, regionDropdown])
 
   //once the current job state changes get Unemployment History
-  useEffect(() => {
+  useDidMountEffect(() => {
     const UnemploymentHistory = async () => {
 
       let url = `https://api.lmiforall.org.uk/api/v1/lfs/unemployment?soc=${currentJob.soc}`;
@@ -155,7 +156,7 @@ export default function JobInformation() {
   }, [currentJob, regionDropdown]);
 
   //once the current job state has changed then searched for the working hours
-  useEffect(() => {
+  useDidMountEffect(() => {
     const getWorkingHours = async () => {
 
       let url = `https://api.lmiforall.org.uk/api/v1/ashe/estimateHours?soc=${currentJob.soc}`;
@@ -180,7 +181,7 @@ export default function JobInformation() {
   }, [currentJob, regionDropdown]);
 
   //once the current job state has changed then search for the related course
-  useEffect(() => {
+  useDidMountEffect(() => {
     try {
       const getRelatedCourse = async () => {
       const req = await axios.get(`https://api.lmiforall.org.uk/api/v1/hesa/courses/${currentJob.soc}`);
@@ -203,7 +204,7 @@ export default function JobInformation() {
   }, [currentJob]);
 
   //once the current job state has changed then set the average salary
-  useEffect(() => {
+  useDidMountEffect(() => {
     try {
       let sum = 0;
       estimatePay.datasets[0].data.forEach(element => {
@@ -215,21 +216,41 @@ export default function JobInformation() {
     }
   }, [estimatePay, regionDropdown]);
 
-  const searchJob = async () => {
-    if (jobInput.current.value === null ||jobInput.current.value === '') {
-      seterrorMessage('Please provide an input');
-      return;
+
+  //autocomplete area 
+  useDidMountEffect(() => {
+    const autocomplete = async () => {
+      await searchJob();
+    };
+
+    autocomplete();
+  },[jobInput])
+
+
+
+
+
+  const searchJob = async (job) => {
+
+
+    if (jobInput === null || jobInput === '') {
+      setJobData([]);
+      return
     }
 
-    const job = await axios.get(`https://api.lmiforall.org.uk/api/v1/soc/search?q=${jobInput.current.value}`);
-    if (job.data.length === 0) {
-      seterrorMessage('No Results Found');
-      return;
+    job && setJobInput(job);
+
+    const req = await axios.get(`https://api.lmiforall.org.uk/api/v1/soc/search?q=${job || jobInput}`);
+    const jobs = await req.data;
+    setJobData(jobs);
+  
+
+    if (job) {
+      const jobdata = jobs[0];
+      await setCurrentJob(jobdata);
+      setSearched(true)
     }
-    seterrorMessage('');
-    const jobdata = await job.data[0];
-    await setCurrentJob(jobdata);
-    setSearched(true)
+
   };
   
 
@@ -239,14 +260,26 @@ export default function JobInformation() {
         <h1 className={styles.heading}>Job Information</h1>
         <div className={styles.search_area}>
           <div className={styles.search_box}>
-            <input onKeyUp={(e) => e.code === 'Enter' && searchJob() } type='text' ref={jobInput} placeholder='Search for a job...'/>
-            <button onClick={searchJob}>
+            <input type='text' value={jobInput} onChange={(e) => setJobInput(e.target.value)} placeholder='Search for a job...'/>
+            <button>
               <svg height="16px" width="16px" fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                 <path d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z" fillRule="evenodd"/>
                 <path d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" fillRule="evenodd"/>
               </svg>
             </button>
           </div>
+          {jobData.length > 0 && 
+            <div className={styles.autoComplete_container} id='autoComplete_container'>
+              {jobData.map(obj => {
+                return (
+                  <div key={obj.soc} className={styles.autoComplete_row}>
+                    {errorMessage.length > 0 && <p>{errorMessage}</p>}
+                    <button onClick={() => searchJob(obj.title)}>{obj.title}</button>
+                  </div> 
+              )
+              })}
+            </div>
+          }
           <div className={styles.dropdown_box}>
             <select id='Region-Filter' ref={regionDropdown} onChange={searchJob}>
               <option value='0'>All Areas</option>
@@ -267,7 +300,6 @@ export default function JobInformation() {
               <path d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"/>
             </svg>
           </div>
-        {errorMessage.length > 0 && <p>{errorMessage}</p>}
         </div>
         {!searched ? 
           <div className={styles.not_searched}>

@@ -189,3 +189,31 @@
 
 }
 
+.autoComplete_container {
+  width: 60%;
+  background-color: #c9c9c9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  max-height: 200px;
+  overflow-y: scroll;
+  padding: 20px 0;
+  transition: .5s ease;
+}
+
+.autoComplete_container button {
+  cursor: pointer;
+  display: block;
+  margin: 10px 0;
+  padding: 10px 20px;
+  border-radius: 4px;
+  border: none;
+  background: none;
+  transition: .4s ease;
+}
+
+.autoComplete_container button:hover {
+  background: #413B8D;
+  color: #fdfdfd;
+}
