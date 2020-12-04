@@ -1,0 +1,30 @@
+.four0four {
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.middle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.heading svg {
+  margin-right: 10px;
+}
+
+.purple_link {
+  display: inline;
+  color: #413B8D;
+  font-weight: 700;
+}

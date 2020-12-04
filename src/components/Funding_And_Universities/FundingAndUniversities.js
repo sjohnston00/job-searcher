@@ -10,15 +10,18 @@ export default function FundingAndUniversities() {
   useEffect(() => {
 
     const search = async () => {
-      const req = await axios.get(`http://universities.hipolabs.com/search?name=${searchBox}&country=United%20Kingdom`);
-      const data = await req.data;
-
-
-      const filteredData = data.filter((obj, index, self) => {
-        return self.findIndex(t => t.name === obj.name) === index;
-      });
-
-      setUniverities(filteredData);
+      try {
+        const req = await axios.get(`http://universities.hipolabs.com/search?name=${searchBox}&country=United%20Kingdom`);
+        const data = await req.data;
+  
+        const filteredData = data.filter((obj, index, self) => {
+          return self.findIndex(t => t.name === obj.name) === index;
+        });
+  
+        setUniverities(filteredData);
+      } catch (error) {
+        alert('This page does not work as the API where the data comes from is a HTTP endpoint. For safety and security reason I have disabled this functionality.');      
+      }
     }
 
     search();
