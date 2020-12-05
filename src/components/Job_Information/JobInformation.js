@@ -17,6 +17,7 @@ export default function JobInformation() {
   const [jobInput, setJobInput] = useState('');
   const regionDropdown = useRef(null);
   const [jobData, setJobData] = useState([]);
+  const [counter, setCounter] = useState(0);
 
 
   //custom hook so it doesn't run on first render
@@ -238,7 +239,6 @@ export default function JobInformation() {
       return
     }
 
-    job && setJobInput(job);
 
     const req = await axios.get(`https://api.lmiforall.org.uk/api/v1/soc/search?q=${job || jobInput}`);
     const jobs = await req.data;
@@ -249,10 +249,11 @@ export default function JobInformation() {
       const jobdata = jobs[0];
       await setCurrentJob(jobdata);
       setSearched(true)
+      setJobInput('');
     }
 
+
   };
-  
 
   return (
     <>
@@ -260,7 +261,11 @@ export default function JobInformation() {
         <h1 className={styles.heading}>Job Information</h1>
         <div className={styles.search_area}>
           <div className={styles.search_box}>
-            <input type='text' value={jobInput} onChange={(e) => setJobInput(e.target.value)} placeholder='Search for a job...'/>
+            <input 
+              type='text' 
+              value={jobInput} 
+              onChange={(e) => setJobInput(e.target.value)} 
+              placeholder='Search for a job...'/>
             <button>
               <svg height="16px" width="16px" fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                 <path d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z" fillRule="evenodd"/>
@@ -272,10 +277,7 @@ export default function JobInformation() {
             <div className={styles.autoComplete_container} id='autoComplete_container'>
               {jobData.map(obj => {
                 return (
-                  <div key={obj.soc} className={styles.autoComplete_row}>
-                    {errorMessage.length > 0 && <p>{errorMessage}</p>}
-                    <button onClick={() => searchJob(obj.title)}>{obj.title}</button>
-                  </div> 
+                    <button key={obj.soc} onClick={() => searchJob(obj.title)}>{obj.title}</button>
               )
               })}
             </div>

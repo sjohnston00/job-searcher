@@ -54,7 +54,7 @@ form {
   border-radius: 8px;
   padding: 10px 20px;
   color: white;
-  margin-bottom: 40px;
+  margin: 40px 20px;
   box-shadow: 1px 0 10px 5px rgba(0, 0, 0, 0.2);
 }
 
@@ -101,6 +101,7 @@ form {
     transform: translateX(-10px);
     height: 550px;
     display: flex;
+    margin: 40px 0;
     justify-content: space-between;
     flex-direction: column;
     flex: 1;
