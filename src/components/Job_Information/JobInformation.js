@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef} from 'react'
+import React, {useState, useRef} from 'react'
 import {Line} from 'react-chartjs-2';
 import axios from 'axios';
 import styles from './JobInformation.module.css'
@@ -7,7 +7,6 @@ import useDidMountEffect from '../../hooks/useComponentDidMount';
 export default function JobInformation() {
   //declaring state variables
   const [currentJob, setCurrentJob] = useState({});
-  const [errorMessage, seterrorMessage] = useState('');
   const [estimatePay, setestimatePay] = useState({});
   const [estimateHours, setEstimateHours] = useState(0);
   const [relatedCourses, setRelatedCourses] = useState([]);
@@ -17,7 +16,6 @@ export default function JobInformation() {
   const [jobInput, setJobInput] = useState('');
   const regionDropdown = useRef(null);
   const [jobData, setJobData] = useState([]);
-  const [counter, setCounter] = useState(0);
 
 
   //custom hook so it doesn't run on first render
@@ -217,7 +215,6 @@ export default function JobInformation() {
     }
   }, [estimatePay, regionDropdown]);
 
-
   //autocomplete area 
   useDidMountEffect(() => {
     const autocomplete = async () => {
@@ -226,10 +223,6 @@ export default function JobInformation() {
 
     autocomplete();
   },[jobInput])
-
-
-
-
 
   const searchJob = async (job) => {
 
