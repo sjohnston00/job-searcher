@@ -39,6 +39,7 @@ form {
 }
 
 .submit_button {
+  cursor: pointer;
   border: none;
   color: white;
   background: #413B8D;

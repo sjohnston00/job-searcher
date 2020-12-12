@@ -1,37 +1,58 @@
-import React from 'react'
+import React, {useRef} from 'react'
 import styles from './ContactUs.module.css'
 
 export default function ContactUs() {
+
+  const firstName = useRef(null)
+  const lastName = useRef(null)
+  const email = useRef(null)
+  const phoneNumber = useRef(null)
+  const message = useRef(null)
+
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert(`First Name: ${firstName.current.value}
+Last Name: ${lastName.current.value}
+Email: ${email.current.value}
+Phone Number: ${phoneNumber.current.value}
+Message: ${message.current.value}`
+)
+  };
+  
+
   return (
     <div className={styles.flex_container}>
       <div className={styles.form_container}>
         <h1 className={styles.heading}>Contact Us</h1>
         <p className={styles.heading}>Any Questions? Don't hesitate to contact us.</p>
 
-          <form action="/" method="post">
+          <form
+           onSubmit={handleSubmit}
+           >
             <div className={styles.input_group}>
               <label htmlFor="first-name" required>First Name</label>
-              <input type="text" id="first-name"/>
+              <input ref={firstName} type="text" id="first-name"/>
             </div>
 
             <div className={styles.input_group}>
               <label htmlFor="last-name" required>Last Name</label>
-              <input type="text" id="last-name"/>
+              <input ref={lastName} type="text" id="last-name"/>
             </div>
 
             <div className={styles.input_group}>
               <label htmlFor="email" required>Email</label>
-              <input type="email" id="email"/>
+              <input ref={email} type="email" id="email"/>
             </div>
 
             <div className={styles.input_group}>
               <label htmlFor="phone-number" required>Phone Number</label>
-              <input type="tel" id="phone-number"/>
+              <input ref={phoneNumber} type="tel" id="phone-number"/>
             </div>
 
             <div className={styles.message_group}>
               <label htmlFor="message" required>Message</label>
-              <textarea id="message"></textarea>
+              <textarea ref={message} id="message"></textarea>
             </div>
 
             <button className={styles.submit_button}>Send Message</button>
