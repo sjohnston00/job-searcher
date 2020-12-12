@@ -13,7 +13,7 @@ export default function Footer() {
           <h2>Information</h2>
           <a href='https://www.careeronestop.org/' rel='noreferrer' target='_blank'>CareerOneStop</a>
           <a href='https://www.mynextmove.org/' rel='noreferrer' target='_blank'>My Next Move</a>
-          <a href='https://www.mynextmove.org/' rel='noreferrer' target='_blank'>LMI For All API</a>
+          <a href='https://www.lmiforall.org.uk/' rel='noreferrer' target='_blank'>LMI For All API</a>
         </div>
         <div className={styles.community}>
           <h2>Community</h2>
