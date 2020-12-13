@@ -18,28 +18,28 @@ export default function ContactUs() {
 
         <form action='/Contact_Us.php' method="POST">
           <div className={styles.input_group}>
-            <label htmlFor="first-name" required>First Name</label>
-            <input tabIndex="1" ref={firstName} type="text" id="first-name" name='first-name'/>
+            <label htmlFor="first-name">First Name</label>
+            <input tabIndex="1" ref={firstName} type="text" id="first-name" name='first-name' required/>
           </div>
 
           <div className={styles.input_group}>
-            <label htmlFor="last-name" required>Last Name</label>
-            <input tabIndex="2" ref={lastName} type="text" id="last-name" name='last-name'/>
+            <label htmlFor="last-name">Last Name</label>
+            <input tabIndex="2" ref={lastName} type="text" id="last-name" name='last-name' required/>
           </div>
 
           <div className={styles.input_group}>
-            <label htmlFor="email" required>Email</label>
-            <input tabIndex="3" ref={email} type="email" id="email" name='email'/>
+            <label htmlFor="email">Email</label>
+            <input tabIndex="3" ref={email} type="email" id="email" name='email' required/>
           </div>
 
           <div className={styles.input_group}>
-            <label htmlFor="phone-number" required>Phone Number</label>
-            <input tabIndex="4" ref={phoneNumber} type="tel" id="phone-number" name='phone-number'/>
+            <label htmlFor="phone-number">Phone Number</label>
+            <input tabIndex="4" ref={phoneNumber} type="tel" id="phone-number" name='phone-number' required/>
           </div>
 
           <div className={styles.message_group}>
-            <label htmlFor="message" required>Message</label>
-            <textarea tabIndex="5" ref={message} id="message" name='message'></textarea>
+            <label htmlFor="message">Message</label>
+            <textarea tabIndex="5" ref={message} id="message" name='message' required></textarea>
           </div>
           <button tabIndex="6" className={styles.submit_button}>Send Message</button>
         </form>
