@@ -65,7 +65,7 @@ export default function Navbar() {
             <h2>Help</h2>
             <p>Head to the <a href='/aboutus' className={styles.purple_link}>About Us</a> section if you want to learn more about us as a company.</p>
             <p>Using the <a href='/jobinformation' className={styles.purple_link}>Job Information</a> page is as easy as searching for any type of job you can think of and press Enter. You can also filter your search to a specific area in the UK by using the dropdown menu beneath the search box.</p>
-            <p>Using the <a href='/areainformation' className={styles.purple_link}>Area Information</a> page is easier than the <a href='/jobinformation' className={styles.purple_link}>Job Information</a> page, just use the dropdown menu and look at the results change for the area you've chossen.</p>
+            <p>Using the <a href='/areainformation' className={styles.purple_link}>Area Information</a> page is easier than the <a href='/jobinformation' className={styles.purple_link}>Job Information</a> page, just use the dropdown menu and look at the results change for the area you've chosen.</p>
             <p>If you looking for Universities around the UK then use our <a href='/fundinganduniversities' className={styles.purple_link}>Funding and Universities</a> page, just search any city of university you would like to know about and the results will apear bellow.</p>
             <p>If you have any further question please do not hesitate to <a href='/contactus' className={styles.purple_link}>Contact Us</a>.</p>
             <button onClick={closeModal}>&times;</button>

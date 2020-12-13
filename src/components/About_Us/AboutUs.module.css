@@ -42,7 +42,6 @@
   text-align: center;
 }
 
-
 @media only screen and (min-width: 800px){
  .flex_container {
    flex-direction: row;

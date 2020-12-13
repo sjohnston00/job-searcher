@@ -49,11 +49,10 @@
   border-radius: 0;
 }
 
-.search_box button {
+.search_box svg {
   margin-left: -35px;
   border: none;
   background: none;
-  cursor: pointer;
 }
 
 .dropdown_box {
@@ -184,10 +183,7 @@
     justify-content: space-between;
     flex-direction: column;
     flex: 2;
-
   }
-
-
 }
 
 .autoComplete_container {

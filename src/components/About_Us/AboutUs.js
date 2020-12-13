@@ -2,9 +2,10 @@ import React from 'react'
 import styles from './AboutUs.module.css'
 
 export default function AboutUs() {
+  document.title = 'About Us - UK Job Searcher';
+
   return (
     <>
-
       <div className={styles.flex_container}>
         <div className={styles.container}>
           <h1 className={styles.heading}>About Us</h1>

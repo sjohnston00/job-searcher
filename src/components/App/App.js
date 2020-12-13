@@ -1,11 +1,11 @@
 import React from 'react';
-import './App.css';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
 } from "react-router-dom";
 
+//Importing every component
 import AboutUs from '../About_Us/AboutUs';
 import AreaInformation from '../Area_Information/AreaInformation';
 import ContactUs from '../Contact_Us/ContactUs';
@@ -14,6 +14,7 @@ import JobInformation from '../Job_Information/JobInformation';
 import Error404 from '../Error404/Error404';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
+
 export default function App() {
   return (
     <>

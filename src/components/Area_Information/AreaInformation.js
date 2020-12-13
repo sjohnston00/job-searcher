@@ -5,6 +5,7 @@ import styles from './AreaInformation.module.css'
 
 
 export default function AreaInformation() {
+  document.title = 'Area Information - UK Job Searcher';
 
   const [regionDropdown, setRegionDropdown] = useState(1);
   const [barChartData, setBarChartData] = useState({});
@@ -12,7 +13,6 @@ export default function AreaInformation() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-
     const requestData = async () => {
       try {
         setLoading(true)
@@ -97,7 +97,7 @@ export default function AreaInformation() {
             <path d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"/>
           </svg>
         </div>
-          <p className={styles.subheading}>Top {!loading ? barChartData.labels.length : 0} hardest jobs to fill in chossen area</p>
+          <p className={styles.subheading}>Top {!loading ? barChartData.labels.length : 0} hardest jobs to fill in chosen area</p>
           {errorMessage.length > 0 && <p>{errorMessage}</p>}
           {loading && <p>Loading...</p>}
           <div className={styles.chart_container}>
@@ -122,17 +122,11 @@ export default function AreaInformation() {
                 callbacks: {
                     label: function(tooltipItem, data) {
                         var label = data.datasets[tooltipItem.datasetIndex].label || '';
-
-                        if (label) {
-                            label += ': ';
-                        }
-                        label += `${Math.round(tooltipItem.xLabel * 100) / 100}%`;
+                        label += `: ${Math.round(tooltipItem.xLabel * 100) / 100}%`;
                         return label;
                     }
                 }
               }
-
-            
             }}/>
           </div>
         </div>

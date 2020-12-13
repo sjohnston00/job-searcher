@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from './Error404.module.css';
 
+//a component that only renders when a user enters an invalid path 
 export default function Error404() {
   document.title = '404 Not Found - UK Job Searcher';
 

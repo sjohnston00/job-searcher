@@ -1,21 +1,13 @@
 * {
   margin: 0;
-  font-family: 'Segoe UI', 'Roboto', 'Oxygen','Ubuntu', 
-  'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-  sans-serif;
+  font-family: 'Segoe UI', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  -webkit-appearance: none;
+  /* removing default styling of all web components, allows for easier development across platforms */
+  -webkit-appearance: none; 
 }
 
 body {
   min-height: 100vh;
   overflow-x: hidden;
-}
-
-
-
-
-a {
-  cursor: pointer;
 }

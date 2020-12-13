@@ -5,6 +5,8 @@ import styles from './JobInformation.module.css'
 import useDidMountEffect from '../../hooks/useComponentDidMount';
 
 export default function JobInformation() {
+  document.title = 'Job Information - UK Job Searcher';
+
   //declaring state variables
   const [currentJob, setCurrentJob] = useState({});
   const [estimatePay, setestimatePay] = useState({});
@@ -16,7 +18,6 @@ export default function JobInformation() {
   const [jobInput, setJobInput] = useState('');
   const regionDropdown = useRef(null);
   const [jobData, setJobData] = useState([]);
-
 
   //custom hook so it doesn't run on first render
   //once the currentJob has changed search for estimate pay
@@ -215,7 +216,7 @@ export default function JobInformation() {
     }
   }, [estimatePay, regionDropdown]);
 
-  //autocomplete area 
+  //autocomplete the search area 
   useDidMountEffect(() => {
     const autocomplete = async () => {
       await searchJob();
@@ -225,8 +226,6 @@ export default function JobInformation() {
   },[jobInput])
 
   const searchJob = async (job) => {
-
-
     if (jobInput === null || jobInput === '') {
       setJobData([]);
       return
@@ -259,12 +258,10 @@ export default function JobInformation() {
               value={jobInput} 
               onChange={(e) => setJobInput(e.target.value)} 
               placeholder='Search for a job...'/>
-            <button>
               <svg height="16px" width="16px" fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                 <path d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z" fillRule="evenodd"/>
                 <path d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" fillRule="evenodd"/>
               </svg>
-            </button>
           </div>
           {jobData.length > 0 && 
             <div className={styles.autoComplete_container} id='autoComplete_container'>
@@ -398,11 +395,7 @@ export default function JobInformation() {
                       callbacks: {
                           label: function(tooltipItem, data) {
                               var label = data.datasets[tooltipItem.datasetIndex].label || '';
-
-                              if (label) {
-                                  label += ': ';
-                              }
-                              label += `${Math.round(tooltipItem.yLabel * 100) / 100}%`;
+                              label += `: ${Math.round(tooltipItem.yLabel * 100) / 100}%`;
                               return label;
                           }
                       }
