@@ -1,13 +1,14 @@
 .container {
-  background-color: #EFF0F0;
+  background-color: #eff0f0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px 10px;
 }
 
-
-.first_column h1, .second_column button, .second_column a{
+.first_column h1,
+.second_column button,
+.second_column a {
   display: inline;
 }
 
@@ -23,7 +24,7 @@
   display: flex;
   align-items: center;
 }
-.github_icon{
+.github_icon {
   height: 32px;
   width: 32px;
 }
@@ -41,7 +42,7 @@
   backdrop-filter: blur(4px);
 }
 
-.modal_content{
+.modal_content {
   position: relative;
   background-color: #efefef;
   margin: 15px auto;
@@ -58,7 +59,7 @@
   letter-spacing: 1px;
 }
 
-.modal_content p{
+.modal_content p {
   line-height: 1.4em;
 }
 
@@ -66,13 +67,13 @@
   position: absolute;
   top: -10px;
   right: 5px;
-  color: #413B8D;
+  color: #413b8d;
   background: none;
   border: none;
   font-size: 3em;
   font-weight: bold;
   cursor: pointer;
-  transition: .3s ease;
+  transition: 0.3s ease;
   border-radius: 8px;
 }
 
@@ -82,10 +83,9 @@
 
 .purple_link {
   display: inline;
-  color: #413B8D;
+  color: #413b8d;
   font-weight: 700;
 }
-
 
 .menu_button {
   margin-left: -10px;
@@ -102,18 +102,18 @@
   z-index: 1;
   background-color: #fdfdfd;
   overflow-x: hidden;
-  transition: .15s ease;
+  transition: 0.15s ease;
   box-shadow: 1px 0 10px 5px rgba(0, 0, 0, 0.1);
 }
 
 .sidebar a {
   padding: 20px;
   display: block;
-  transition: .3s ease;
+  transition: 0.3s ease;
 }
 
 .sidebar a:hover {
-  background-color: #EFF0F0;
+  background-color: #eff0f0;
   text-decoration: none;
 }
 
@@ -123,7 +123,6 @@
   padding: 0 50px 0 0;
   font-size: 1.2em;
 }
-
 
 .close_button {
   border: none;

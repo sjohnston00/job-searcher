@@ -1,7 +1,7 @@
 a {
   display: block;
   text-decoration: none;
-  color: #090C10;
+  color: #090c10;
 }
 
 a:hover {
@@ -22,9 +22,8 @@ a:hover {
 }
 
 .container {
-  background-color: #EFF0F0;
+  background-color: #eff0f0;
 }
-
 
 .main_footer {
   display: flex;
@@ -33,21 +32,24 @@ a:hover {
   padding: 20px;
 }
 
-.information, .community {
+.information,
+.community {
   margin-right: 20px;
 }
 
-.information h2, .community h2{
+.information h2,
+.community h2 {
   padding: 10px 0;
   font-size: 16px;
 }
 
-.information a, .community a {
+.information a,
+.community a {
   font-size: 14px;
   padding: 2px 0;
 }
 
-.donate_button{
+.donate_button {
   max-height: 30px;
   max-width: 100px;
   text-transform: uppercase;
@@ -55,7 +57,7 @@ a:hover {
   border-radius: 4px;
   cursor: pointer;
   border: none;
-  background-color: #413B8D;
+  background-color: #413b8d;
   color: #fdfdfd;
 }
 
@@ -72,7 +74,8 @@ a:hover {
   margin: 10px 0;
 }
 
-.footer_second_column a, .footer_second_column span {
+.footer_second_column a,
+.footer_second_column span {
   padding: 0 15px 0 0;
 }
 
