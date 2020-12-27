@@ -1,4 +1,5 @@
-.container, .flex_container {
+.container,
+.flex_container {
   margin: 10px 20px;
 }
 
@@ -8,7 +9,7 @@
 }
 
 .services {
-  background-color: #413B8D;
+  background-color: #413b8d;
   box-shadow: 1px 0px 10px 5px rgba(0, 0, 0, 0.2);
   margin: 20px 0;
   border-radius: 4px;
@@ -27,7 +28,8 @@
 .service_icon {
   display: flex;
   flex-direction: column;
-  justify-content: center;align-items: center;
+  justify-content: center;
+  align-items: center;
   padding: 30px 20px;
   border-radius: 8px;
   background-color: #9fa4a931;
@@ -35,33 +37,33 @@
 
 .service_icon p {
   margin: 10px 0;
-  font-size: .8em;
+  font-size: 0.8em;
+  letter-spacing: 0.5px;
 }
 
 .heading {
   text-align: center;
 }
+.container p {
+  line-height: 1.6em;
+  letter-spacing: 1px;
+}
 
-@media only screen and (min-width: 800px){
- .flex_container {
-   flex-direction: row;
- } 
- .container {
-   margin: 20px 0;
-   flex: 1;
- }
+@media only screen and (min-width: 800px) {
+  .flex_container {
+    flex-direction: row;
+  }
+  .container {
+    margin: 20px 0;
+    flex: 1;
+  }
 
- .container h1 {
-   margin-bottom: 20px;
- }
+  .container h1 {
+    margin-bottom: 20px;
+  }
 
- .container p {
-   line-height: 1.4em;
-   letter-spacing: 1px;
- }
-
- .services {
-   flex: 1.5;
-   transform: translateX(50px);
- }
+  .services {
+    flex: 1.5;
+    transform: translateX(50px);
+  }
 }

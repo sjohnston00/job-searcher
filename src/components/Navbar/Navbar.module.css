@@ -60,7 +60,8 @@
 }
 
 .modal_content p {
-  line-height: 1.4em;
+  line-height: 1.6em;
+  letter-spacing: 0.5px;
 }
 
 .modal_content button {

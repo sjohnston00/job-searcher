@@ -1,5 +1,6 @@
 .container {
   margin: 10px 20px;
+  min-height: 70vh;
 }
 .heading {
   text-align: center;
