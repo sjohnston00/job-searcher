@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { Line } from "react-chartjs-2";
 import axios from "axios";
 import styles from "./JobInformation.module.css";
@@ -16,7 +16,7 @@ export default function JobInformation() {
   const [averageWage, setAverageWage] = useState(0);
   const [searched, setSearched] = useState(false);
   const [jobInput, setJobInput] = useState("");
-  const regionDropdown = useRef(null);
+  const [regionDropdown, setRegionDropdown] = useState(0);
   const [jobData, setJobData] = useState([]);
 
   //custom hook so it doesn't run on first render
@@ -24,8 +24,8 @@ export default function JobInformation() {
   useDidMountEffect(() => {
     const chart = async () => {
       let url = `https://api.lmiforall.org.uk/api/v1/ashe/estimatePay?soc=${currentJob.soc}`;
-      if (regionDropdown.current.value > 0) {
-        url = `https://api.lmiforall.org.uk/api/v1/ashe/estimatePay?soc=${currentJob.soc}&filters=region%3A${regionDropdown.current.value}`;
+      if (regionDropdown > 0) {
+        url = `https://api.lmiforall.org.uk/api/v1/ashe/estimatePay?soc=${currentJob.soc}&filters=region%3A${regionDropdown}`;
       }
 
       try {
@@ -100,8 +100,8 @@ export default function JobInformation() {
   useDidMountEffect(() => {
     const UnemploymentHistory = async () => {
       let url = `https://api.lmiforall.org.uk/api/v1/lfs/unemployment?soc=${currentJob.soc}`;
-      if (regionDropdown.current.value > 0) {
-        url = `https://api.lmiforall.org.uk/api/v1/lfs/unemployment?soc=${currentJob.soc}&filterBy=region%3A${regionDropdown.current.value}`;
+      if (regionDropdown > 0) {
+        url = `https://api.lmiforall.org.uk/api/v1/lfs/unemployment?soc=${currentJob.soc}&filterBy=region%3A${regionDropdown}`;
       }
       //use the SOC in state to get the average unemployment rates from the LMI For ALL API
       const req = await axios.get(url);
@@ -158,8 +158,8 @@ export default function JobInformation() {
   useDidMountEffect(() => {
     const getWorkingHours = async () => {
       let url = `https://api.lmiforall.org.uk/api/v1/ashe/estimateHours?soc=${currentJob.soc}`;
-      if (regionDropdown.current.value > 0) {
-        url = `https://api.lmiforall.org.uk/api/v1/ashe/estimateHours?soc=${currentJob.soc}&filters=region%3A${regionDropdown.current.value}`;
+      if (regionDropdown > 0) {
+        url = `https://api.lmiforall.org.uk/api/v1/ashe/estimateHours?soc=${currentJob.soc}&filters=region%3A${regionDropdown}`;
       }
 
       const workingHoursReq = await axios.get(url);
@@ -291,8 +291,9 @@ export default function JobInformation() {
           <div className={styles.dropdown_box}>
             <select
               id="Region-Filter"
-              ref={regionDropdown}
-              onChange={searchJob}
+              onChange={(e) => {
+                setRegionDropdown(e.target.value);
+              }}
             >
               <option value="0">All Areas</option>
               <option value="1">London</option>
